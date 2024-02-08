@@ -91,13 +91,17 @@ mesh_runs: 2                    #   Number of passes to make during mesh scan.
 1. Move your bed plate 2-3 mm away from the nozzle 
 2. On the homescreen of your web UIX, press the **`CARTO_CALIBRATE`** macro and wait for the Z offset wizard to pop up.
 Follow the [Paper Test Method](https://www.klipper3d.org/Bed_Level.html#the-paper-test)
-Upon completion ```SAVE_CONFIG```
-    **IMPORTANT SAFETY CHECK**
-3. While your motors are disabled manually move the bed away from the nozzle (at least a fist away) and type into klipper’s console: ```M119```
+Upon completion *`SAVE_CONFIG`*
+
+### IMPORTANT SAFETY CHECK
+
+While your motors are disabled, manually move the bed away from the nozzle (at least a fist away) and type into klipper’s console: **`M119`**.
+
 If your Z endstop is “OPEN” you are safe to continue however if it is “TRIGGERED” re-do step 2 or begin troubleshooting.
-4. If you have verified that your Z endstop is functioning correctly, please home all. If the nozzle crashes please e-stop the printer and re-try from step 1.
-5. You may now run **`CARTO_BED_MESH`** to produce your first mesh! Save this one complete, make any tramming adjustments you require to make the bed flat. It is expected you will have up to 1.4mm variance from PRTouch as there is a known issue with their mesh accuracy.
-6. Once you have your first bed mesh you will need to change your machine settings in your slicer Start G-Code to the following:
+
+3. If you have verified that your Z endstop is functioning correctly, please home all. If the nozzle crashes please e-stop the printer and re-try from step 1.
+4. You may now run **`CARTO_BED_MESH`** to produce your first mesh! Save this one complete, make any tramming adjustments you require to make the bed flat. It is expected you will have up to 1.4mm variance from PRTouch as there is a known issue with their mesh accuracy.
+5. Once you have your first bed mesh you will need to change your machine settings in your slicer Start G-Code to the following:
 ``` gcode
 M104 S0 ; Stops OrcaSlicer from sending temp waits separately
 M140 S0
