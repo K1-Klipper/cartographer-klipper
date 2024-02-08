@@ -10,8 +10,9 @@
 * **<span style="text-decoration:underline;">Root access -> Moonraker & Fluidd OR Mainsail (having both installed may cause issues / mcu timeout)</span>**
 * **<span style="text-decoration:underline;">Updated klipper from Zarboz : [Found here](https://discord.com/channels/1154500511777693819/1168928848419766372)</span>**
 * **<span style="text-decoration:underline;">Guppyscreen with De-creality (suggested to lower MCU utilization) : [Found Here](https://github.com/ballaswag/guppyscreen)</span>** 
- <br><br/>
-1. Pull the repo and run the installer: \
+
+
+1. Pull the repo and run the installer:
 ```
 git clone https://github.com/K1-Klipper/cartographer-klipper.git
 ```
@@ -19,28 +20,18 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
 ```
  cd cartographer-klipper && sh ./k1_installer.sh
 ```
-<br><br/>
 2. Open an ssh connection and type:
 
      ls /dev/serial/by-id/
     
    **Copy the output from this into a notepad for later.**
-     <br><br/>
-<br><br/>
 3. Add the following to your printer.cfg includes if it does not already exist:
-
-
-    [include KAMP_Settings.cfg]                _ \
-
-<br><br/>
-
+```
+    [include KAMP_Settings.cfg]
+```
 4. Inside your printer.cfg remove anything related to PRtouch (ie. [prtouch_v2], [prtouch default]) , this includes anything below the save config section. (the section that looks like #*#)
-   <br><br/>
-   <br><br/>
 5. Add the following mcu at the top of printer.cfg but below the [mcu_rpi] section filling in the ***(ID YOU NOTED EARLIER)*** with the output from step 2:
-<br><br/>   
-   **EXAMPLE:**  /dev/serial/by-id/usb-Cartographer_614e_048015001043303856303820-if00
-<br><br/>
+   ### **EXAMPLE:**  /dev/serial/by-id/usb-Cartographer_614e_048015001043303856303820-if00
    ```
     [cartographer]
     serial: /dev/serial/by-id/(ID YOU NOTED EARLIER)   # change this line to have your cartographer id.
@@ -63,7 +54,6 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
     mesh_cluster_size: 1            #   Radius of mesh grid point clusters.
     mesh_runs: 2                    #   Number of passes to make during mesh scan.
     ```
-   <br><br/>
 7. In printer.cfg under [stepper_z] edit the endstop pin to the following:
 
     Remove the following:
@@ -76,9 +66,9 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
     endstop_pin: probe:z_virtual_endstop # use cartographer as virtual endstop
     homing_retract_dist: 0 # cartographer needs this to be set to 0
      ```
-<br><br/>
 7. Inside printer.cfg remove your [bed_mesh] section and replace it with EITHER of the following:
 
+    ```
     [bed_mesh]              # K1
     zero_reference_position: 112,112
     speed: 135              # recommended max 150 - absolute max 180. Going above 150 will cause mcu hanging / crashing or inconsistent spikey meshes due to bandwidth limitation.  
@@ -87,10 +77,9 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
     probe_count: 20,20      # tested 100x100 working
     algorithm: bicubic      # required for above 5x5 meshing
     bicubic_tension: 0.1
-   <br><br/>
+    ```
 **OR**
-   <br><br/>
-
+    ```
     [bed_mesh]              # K1
     zero_reference_position: 112,112
     speed: 135              # recommended max 150 - absolute max 180. Going above 150 will cause mcu hanging / crashing or inconsistent spikey meshes due to bandwidth limitation.  
@@ -99,31 +88,19 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
     probe_count: 20,20      # tested 100x100 working
     algorithm: bicubic      # required for above 5x5 meshing
     bicubic_tension: 0.1
-<br><br/>
+    ```
+
+
 # First Steps and Calibration:
-1. Move your bed plate 2-3 mm away from the nozzle \
-<br><br/>
+1. Move your bed plate 2-3 mm away from the nozzle 
 2. On the homescreen of your web UIX, press the ```CARTO_CALIBRATE``` macro and wait for the Z offset wizard to pop up.
-<br><br/>
 Follow the [Paper Test Method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) 
-<br><br/>
 Upon completion ```SAVE_CONFIG```
-<br><br/>
-<br><br/>
     **IMPORTANT SAFETY CHECK**
-<br><br/>
-<br><br/>
 3. While your motors are disabled manually move the bed away from the nozzle (at least a fist away) and type into klipper’s console: ```M119```
- <br><br/>
 If your Z endstop is “OPEN” you are safe to continue however if it is “TRIGGERED” re-do step 2 or begin troubleshooting.
- <br><br/>
- <br><br/>
 4. If you have verified that your Z endstop is functioning correctly, please home all. If the nozzle crashes please e-stop the printer and re-try from step 1.
-<br><br/>
-<br><br/>
 5. You may now run ```CARTO_BED_MESH``` to produce your first mesh! Save this one complete, make any tramming adjustments you require to make the bed flat. It is expected you will have up to 1.4mm variance from PRTouch as there is a known issue with their mesh accuracy.
-<br><br/>
-<br><br/>
 6. Once you have your first bed mesh you will need to change your machine settings in your slicer Start GCODE to the following:
     ```
     M104 S0 ; Stops OrcaSlicer from sending temp waits separately
@@ -133,8 +110,5 @@ If your Z endstop is “OPEN” you are safe to continue however if it is “TRI
     VALUE=[first_layer_temperature] 
     print_start EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_temperature] CHAMBER=[chamber_temperature]
     ```
-<br><br/>
 8. You may now start your first print! 
-<br><br/>
-<br><br/>
 ***Special Thanks to Zarboz, Shima, BootyCall Jones, and Destinal for their contributions to this project***
