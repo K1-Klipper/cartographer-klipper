@@ -38,7 +38,10 @@
 4. Inside your printer.cfg remove anything related to PRtouch (ie. [prtouch_v2], [prtouch default]) , this includes anything below the save config section. (the section that looks like #*#)
    <br><br/>
    <br><br/>
-5. Add the following mcu at the top of printer.cfg but below the [mcu_rpi] section filling in the *(ID YOU NOTED EARLIER)* with the output from step 2: 
+5. Add the following mcu at the top of printer.cfg but below the [mcu_rpi] section filling in the ***(ID YOU NOTED EARLIER)*** with the output from step 2:
+<br><br/>   
+   **EXAMPLE:**  /dev/serial/by-id/usb-Cartographer_614e_048015001043303856303820-if00
+<br><br/>
    ```
     [cartographer]
     serial: /dev/serial/by-id/(ID YOU NOTED EARLIER)   # change this line to have your cartographer id.
@@ -62,7 +65,7 @@
     mesh_runs: 2                    #   Number of passes to make during mesh scan.
     ```
    <br><br/>
-6. In printer.cfg under [stepper_z] edit the endstop pin to the following:
+7. In printer.cfg under [stepper_z] edit the endstop pin to the following:
 
     Remove the following:
      ```
@@ -77,7 +80,6 @@
 <br><br/>
 7. Inside printer.cfg remove your [bed_mesh] section and replace it with EITHER of the following:
 
-     ```
     [bed_mesh]              # K1
     zero_reference_position: 112,112
     speed: 135              # recommended max 150 - absolute max 180. Going above 150 will cause mcu hanging / crashing or inconsistent spikey meshes due to bandwidth limitation.  
@@ -86,12 +88,10 @@
     probe_count: 20,20      # tested 100x100 working
     algorithm: bicubic      # required for above 5x5 meshing
     bicubic_tension: 0.1
-     ```
    <br><br/>
 **OR**
    <br><br/>
 
-     ```
     [bed_mesh]              # K1
     zero_reference_position: 112,112
     speed: 135              # recommended max 150 - absolute max 180. Going above 150 will cause mcu hanging / crashing or inconsistent spikey meshes due to bandwidth limitation.  
@@ -100,7 +100,6 @@
     probe_count: 20,20      # tested 100x100 working
     algorithm: bicubic      # required for above 5x5 meshing
     bicubic_tension: 0.1
-    ```
 <br><br/>
 # First Steps and Calibration:
 1. Move your bed plate 2-3 mm away from the nozzle \
