@@ -106,8 +106,7 @@ If your Z endstop is “OPEN” you are safe to continue however if it is “TRI
 M104 S0 ; Stops OrcaSlicer from sending temp waits separately
 M140 S0
 SET_GCODE_VARIABLE MACRO=PRINT_START VARIABLE=bed_temp VALUE=[first_layer_bed_temperature] 
-SET_GCODE_VARIABLE MACRO=PRINT_START VARIABLE=extruder_temp \
-VALUE=[first_layer_temperature] 
+SET_GCODE_VARIABLE MACRO=PRINT_START VARIABLE=extruder_temp VALUE=[first_layer_temperature] 
 print_start EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_temperature] CHAMBER=[chamber_temperature]
 ```
 6. You may now start your first print! 
