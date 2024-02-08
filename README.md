@@ -12,14 +12,13 @@
 * **<span style="text-decoration:underline;">Guppyscreen with De-creality (suggested to lower MCU utilization) : [Found Here](https://github.com/ballaswag/guppyscreen)</span>** 
  <br><br/>
 1. Pull the repo and run the installer: \
-
-    ```
-    git clone https://github.com/K1-Klipper/cartographer-klipper.git
-    ```
-    then:
-    ```
-    cd cartographer-klipper && sh ./k1_installer.sh
-    ```
+```
+git clone https://github.com/K1-Klipper/cartographer-klipper.git
+```
+ then:
+```
+ cd cartographer-klipper && sh ./k1_installer.sh
+```
 <br><br/>
 2. Open an ssh connection and type:
 
