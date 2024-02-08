@@ -93,9 +93,9 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
 # First Steps and Calibration:
 1. Move your bed plate 2-3 mm away from the nozzle 
 2. On the homescreen of your web UIX,
-  1. press the ```CARTO_CALIBRATE``` macro and wait for the Z offset wizard to pop up.
-  2.Follow the [Paper Test Method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) 
-  3.Upon completion ```SAVE_CONFIG```
+    1. press the ```CARTO_CALIBRATE``` macro and wait for the Z offset wizard to pop up.
+    2. Follow the [Paper Test Method](https://www.klipper3d.org/Bed_Level.html#the-paper-test) 
+    3. Upon completion ```SAVE_CONFIG```
 **IMPORTANT SAFETY CHECK**
 4. While your motors are disabled manually move the bed away from the nozzle (at least a fist away) and type into klipper’s console: ```M119```
 If your Z endstop is “OPEN” you are safe to continue however if it is “TRIGGERED” re-do step 2 or begin troubleshooting.
