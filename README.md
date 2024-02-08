@@ -79,7 +79,7 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
     bicubic_tension: 0.1
     ```
 **OR**
-    ```
+
     [bed_mesh]              # K1
     zero_reference_position: 112,112
     speed: 135              # recommended max 150 - absolute max 180. Going above 150 will cause mcu hanging / crashing or inconsistent spikey meshes due to bandwidth limitation.  
@@ -88,7 +88,7 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
     probe_count: 20,20      # tested 100x100 working
     algorithm: bicubic      # required for above 5x5 meshing
     bicubic_tension: 0.1
-    ```
+    
 
 
 # First Steps and Calibration:
