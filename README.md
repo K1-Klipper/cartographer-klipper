@@ -110,6 +110,6 @@ SET_GCODE_VARIABLE MACRO=PRINT_START VARIABLE=extruder_temp \
 VALUE=[first_layer_temperature] 
 print_start EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_temperature] CHAMBER=[chamber_temperature]
 ```
-7. You may now start your first print! 
+6. You may now start your first print! 
 
 ***Special Thanks to Zarboz, Shima, BootyCall Jones, and Destinal for their contributions to this project***
