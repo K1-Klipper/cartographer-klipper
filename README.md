@@ -80,12 +80,11 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
     ```
     **OR**
     ```
-    [bed_mesh]              # K1
-    zero_reference_position: 112,112
-    speed: 135              # recommended max 150 - absolute max 180. Going above 150 will cause mcu hanging / crashing or inconsistent spikey meshes due to bandwidth limitation.  
-    mesh_min: 30,25         # up to 30x30 if you have a weird spike bottom left of mesh
-    mesh_max: 210,210       # 210 max before hitting rear plate screws on stock bed
-    probe_count: 20,20      # tested 100x100 working
+    [bed_mesh]              # K1 MAX
+    speed: 150              # max of 150 or cartographer will stutter / timeout
+    mesh_min: 10,22         # x / y offsets for cartographer.
+    mesh_max: 290,280       # add a little space from the back of the bed to prevent scanning screws or crashing into the motor mounts
+    probe_count: 40,40      # tested up to 150x150 points, any higher will timeout the mcu after meshing.
     algorithm: bicubic      # required for above 5x5 meshing
     bicubic_tension: 0.1
     ```
