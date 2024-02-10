@@ -7,7 +7,7 @@
 
 * [Root access](https://github.com/Guilouz/Creality-K1-and-K1-Max/wiki/Install-&-Update-Rooted-Firmware#enable-root-access)
 * [Moonraker & Fluidd **OR** Mainsail. Having both installed may cause issues / mcu timeout](https://github.com/Guilouz/Creality-K1-and-K1-Max/wiki/Moonraker-and-Nginx)
-* [Updated klipper (from Zarboz)](https://discord.com/channels/1154500511777693819/1168928848419766372)
+* [Updated klipper (from Zarboz)](https://github.com/K1-Klipper/installer_script_k1_and_max)
 * [Guppyscreen with De-creality (suggested to lower MCU utilization)](https://github.com/ballaswag/guppyscreen) 
 
 # Software Setup
