@@ -21,7 +21,7 @@ cd cartographer-klipper && sh ./k1_installer.sh
 ```
 3. Find the serial device for the cartographer. Save the file path for later use in cofniguration
 ``` shell
-ls /dev/serial/by-id/usb-Cargographer*
+ls /dev/serial/by-id/usb-Cartographer*
 ```
 4. Add the include for KAMP to your your `printer.cfg` (if it does not already exist)
 ``` ini
