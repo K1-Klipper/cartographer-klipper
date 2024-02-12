@@ -19,7 +19,7 @@ git clone https://github.com/K1-Klipper/cartographer-klipper.git
 
 cd cartographer-klipper && sh ./k1_installer.sh
 ```
-3. Find the serial device for the cartographer. Save the file path for later use in cofniguration
+3. Find the serial device for the cartographer. Save the file path for later use in configuration
 ``` shell
 ls /dev/serial/by-id/usb-Cartographer*
 ```
