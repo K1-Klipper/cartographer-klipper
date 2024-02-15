@@ -16,7 +16,8 @@
 2. Download the repo and run the installer:
 ``` shell
 git clone https://github.com/K1-Klipper/cartographer-klipper.git
-
+```
+```
 cd cartographer-klipper && sh ./k1_installer.sh
 ```
 3. Find the serial device for the cartographer. Save the file path for later use in configuration
