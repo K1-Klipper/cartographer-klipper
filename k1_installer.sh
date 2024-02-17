@@ -10,7 +10,7 @@ check_klipper_directory() {
 gcode_shell_check(){
   if ! [ -f "/usr/data/klipper/klippy/extras/gcode_shell_command.py" ]; then
   echo "Downloading gcode_shell_command.py..."
-  wget --no-check-certificate -qO "/usr/data/klipper/klippy/gcode_shell_command.py" "https://raw.githubusercontent.com/dw-0/kiauh/master/resources/gcode_shell_command.py"
+  wget --no-check-certificate -qO "/usr/data/klipper/klippy/extras/gcode_shell_command.py" "https://raw.githubusercontent.com/dw-0/kiauh/master/resources/gcode_shell_command.py"
     if [ $? -ne 0 ]; then
       echo "Error: Download failed!"
       exit 1
