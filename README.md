@@ -1,14 +1,14 @@
 # Hardware Setup
 
-* [Download the Model](https://www.printables.com/model/684338-k1-k1max-eddy-current-mount-cartographer/)
-* [Follow the Assembly Manual](https://docs.google.com/document/d/1iOOGeqHqNmlJenYUOr2cGRdccpGq-NLx-ezH2wCMzag/edit?usp=sharing)
+* [Download the Model]
+* [Follow the Assembly Manual]
 
 # Software Prerequisites
 
-* [Root access](https://github.com/Guilouz/Creality-K1-and-K1-Max/wiki/Install-&-Update-Rooted-Firmware#enable-root-access)
-* [Moonraker & Fluidd **OR** Mainsail. Having both installed may cause issues / mcu timeout](https://github.com/Guilouz/Creality-K1-and-K1-Max/wiki/Moonraker-and-Nginx)
-* [Updated klipper (from Zarboz)](https://github.com/K1-Klipper/installer_script_k1_and_max)
-* [Guppyscreen with De-creality (suggested to lower MCU utilization)](https://github.com/ballaswag/guppyscreen) 
+* [Root access]
+* [Moonraker & Fluidd **OR** Mainsail]. Having both installed may cause issues / mcu timeout
+* [Updated klipper] (from Zarboz)
+* [Guppyscreen with De-creality] (suggested to lower MCU utilization)
 
 # Software Setup
 
@@ -91,7 +91,7 @@ mesh_runs: 2                    #   Number of passes to make during mesh scan.
 
 1. Move your bed plate 2-3 mm away from the nozzle 
 2. On the homescreen of your web UIX, press the **`CARTO_CALIBRATE`** macro and wait for the Z offset wizard to pop up.
-Follow the [Paper Test Method](https://www.klipper3d.org/Bed_Level.html#the-paper-test)
+Follow the [Paper Test Method]
 Upon completion *`SAVE_CONFIG`*
 
 ### IMPORTANT SAFETY CHECK
@@ -113,3 +113,11 @@ print_start EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_te
 6. You may now start your first print! 
 
 ***Special Thanks to Zarboz, Shima, BootyCall Jones, and Destinal for their contributions to this project***
+
+[Download the Model]: https://www.printables.com/model/684338-k1-k1max-eddy-current-mount-cartographer/
+[Follow the Assembly Manual]: https://docs.google.com/document/d/1iOOGeqHqNmlJenYUOr2cGRdccpGq-NLx-ezH2wCMzag/edit?usp=sharing
+[Root access]: https://github.com/Guilouz/Creality-K1-and-K1-Max/wiki/Install-&-Update-Rooted-Firmware#enable-root-access
+[Moonraker & Fluidd **OR** Mainsail]: https://github.com/Guilouz/Creality-K1-and-K1-Max/wiki/Moonraker-and-Nginx
+[Updated klipper]: https://github.com/K1-Klipper/installer_script_k1_and_max
+[Guppyscreen with De-creality]: https://github.com/ballaswag/guppyscreen
+[Paper Test Method]: https://www.klipper3d.org/Bed_Level.html#the-paper-test
