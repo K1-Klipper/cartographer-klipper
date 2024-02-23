@@ -45,8 +45,10 @@ kamp_check(){
 
 clone_cartographer() {
   git config --global http.sslVerify false
-  git clone -b k1-carto https://github.com/K1-Klipper/cartographer-klipper.git /usr/data/cartographer-klipper
-  
+  git clone https://github.com/K1-Klipper/cartographer-klipper.git /usr/data/cartographer-klipper
+  cd /usr/data/klipper
+  git fetch origin
+  git checkout k1-klipper
 }
 
 create_cartographer_symlink() {
