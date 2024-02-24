@@ -64,15 +64,36 @@ create_cartographer_symlink() {
 }
 
 update_config_files() {
-  sed -i '/\[gcode_macro START_PRINT\]/,/CX_PRINT_DRAW_ONE_LINE/d' /usr/data/printer_data/config/gcode_macro.cfg
-  wget --no-check-certificate -P  /usr/data/printer_data/config/ https://raw.githubusercontent.com/K1-Klipper/cartographer-klipper/master/start_end.cfg
-  sed -i '/\[include printer_params.cfg\]/a\[include cartographer_macro.cfg]\' /usr/data/printer_data/config/printer.cfg
-
-  if grep -q "include start_macro_KAMP.cfg" /usr/data/printer_data/config/printer.cfg || grep -q "include start_macro.cfg" /usr/data/printer_data/config/printer.cfg; then
-    sed -i 's/\[include start_(macro|macro_KAMP)\.cfg\]/[include start_stop.cfg]/g' /usr/data/printer_data/config/printer.cfg
-  else
-    sed -i '/\[include printer_params.cfg\]/a\[include start_end.cfg]\' /usr/data/printer_data/config/printer.cfg
+  if [[ ! -f "/usr/data/printer_data/config/gcode_macro.cfg" ]]; then
+    echo "Error: gcode_macro.cfg not found!"
+    return 1
   fi
+  if ! wget --no-check-certificate -O /tmp/start_end.cfg https://raw.githubusercontent.com/K1-Klipper/cartographer-klipper/master/start_end.cfg; then
+    echo "Error: Downloading start_end.cfg failed!"
+    return 1
+  fi
+  if [[ ! -f /tmp/start_end.cfg ]]; then
+    echo "Error: Downloaded start_end.cfg not found!"
+    return 1
+  fi
+  if [[ ! -f "/usr/data/printer_data/config/printer.cfg.bak" ]]; then
+    cp /usr/data/printer_data/config/printer.cfg /usr/data/printer_data/config/printer.cfg.bak
+  fi
+  if ! sed -i '/\[gcode_macro START_PRINT\]/,/CX_PRINT_DRAW_ONE_LINE/d' /usr/data/printer_data/config/gcode_macro.cfg; then
+    echo "Error: Deleting lines in gcode_macro.cfg failed!"
+    return 1
+  fi
+  mv /tmp/start_end.cfg /usr/data/printer_data/config/start_end.cfg
+  if ! sed -i '/\[include printer_params.cfg\]/a\[include cartographer_macro.cfg\]' /usr/data/printer_data/config/printer.cfg; then
+    echo "Error: Adding cartographer_macro.cfg to printer.cfg failed!"
+    return 1
+  fi
+  if ! sed -i '/\[include cartographer_macro.cfg\]/a\[include start_end.cfg\]' /usr/data/printer_data/config/printer.cfg; then
+    echo "Error: Adding start_end.cfg to printer.cfg failed!"
+    return 1
+  fi
+  echo "Config files updated successfully!"
+  return 0
 }
 
 backup_sensorless_config() {
