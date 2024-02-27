@@ -408,7 +408,7 @@ class CartographerProbe:
         self.toolhead.set_position(pos)
 
         # Dump calibration curve
-        fn = "/tmp/cartographer-calibrate-"+time.strftime("%Y%m%d_%H%M%S")+".csv"
+        fn = "/usr/data/cartographer-calibrate-"+time.strftime("%Y%m%d_%H%M%S")+".csv"
         f = open(fn, "w")
         f.write("freq,z,temp\n")
         for i in range(len(freq)):
