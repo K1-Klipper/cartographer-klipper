@@ -35,7 +35,7 @@ entware_check(){
 
 kamp_check(){
   if [[ ! -d "/usr/data/KAMP-for-K1-Series/" ]]; then
-  git https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git /usr/data/KAMP || {
+  git clone https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git /usr/data/KAMP || {
     echo "Error: Git clone failed. Exiting..."
     exit 1
   }
