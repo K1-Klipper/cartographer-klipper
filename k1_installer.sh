@@ -35,11 +35,18 @@ entware_check(){
 
 kamp_check(){
   if [[ ! -d "/usr/data/KAMP-for-K1-Series/" ]]; then
-  git clone https://github.com/Guilouz/KAMP-for-K1-Series.git /usr/data/ || {
+  git https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git /usr/data/KAMP || {
     echo "Error: Git clone failed. Exiting..."
     exit 1
   }
-  cp KAMP-for-K1-Series/Configuration/KAMP_Settings.cfg /usr/data/printer_data/config/
+  cp /usr/data/KAMP/Configuration/KAMP_Settings.cfg /usr/data/printer_data/config/
+  mkdir /usr/data/printer_config/config/KAMP
+  ln -s /usr/data/KAMP/Configuration/Line_Purge.cfg /usr/data/printer_config/config/KAMP/
+  ln -s /usr/data/KAMP/Configuration/Smart_Park.cfg /usr/data/printer_config/config/KAMP/
+  ln -s /usr/data/KAMP/Configuration/Adaptive_Meshing.cfg /usr/data/printer_config/config/KAMP/
+  sed -i 's/^#\s+\[include \.\/KAMP\/Adaptive_Meshing\.cfg\]\s*$/[include \.\/KAMP\/Adaptive_Meshing\.cfg]\t# Include to enable adaptive meshing configuration./' /usr/data/printer_data/config/KAMP_Settings.cfg
+  sed -i 's/^#\s+\[include \.\/KAMP\/Line_Purge\.cfg\]\s*$/[include \.\/KAMP\/Line_Purge\.cfg]\t# Include to enable adaptive line purging configuration./' /usr/data/printer_data/config/KAMP_Settings.cfg
+  sed 's/^#\s+\[include \.\/KAMP\/Smart_Park\.cfg\]\s*$/[include \.\/KAMP\/Smart_Park\.cfg]\t# Include to enable the Smart Park function, which parks the printhead near the print area for final heating./' /usr/data/printer_data/config/KAMP_Settings.cfg
   fi
 }
 
