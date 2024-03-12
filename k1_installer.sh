@@ -115,7 +115,7 @@ backup_sensorless_config() {
 
 update_klipper_service() {
   rm /etc/init.d/S55klipper_service
-  wget -O- --no-check-certificate https://raw.githubusercontent.com/Guilouz/Creality-K1-and-K1-Max/main/Scripts/files/services/S55klipper_service > /etc/init.d/S55klipper_service
+  wget -O- --no-check-certificate https://raw.githubusercontent.com/K1-Klipper/installer_script_k1_and_max/main/S55klipper_service > /etc/init.d/S55klipper_service
   sed -i '/\[include Helper-Script\/screws-tilt-adjust.cfg\]/d' /usr/data/printer_data/config/printer.cfg
   sed -i '/\[include Helper-Script\/save-zoffset.cfg\]/d' /usr/data/printer_data/config/printer.cfg
   chmod +x  /etc/init.d/S55klipper_service
