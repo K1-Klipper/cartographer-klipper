@@ -21,7 +21,7 @@ gcode_shell_check(){
 entware_check(){
   if ! [ -f "/opt/bin/opkg" ]; then
     echo "File '/opt/bin/opkg' not found. Fetching files..."
-    wget --no-check-certificate -qO /tmp/generic.sh https://raw.githubusercontent.com/Guilouz/Creality-Helper-Script/main/scripts/entware.sh
+    wget --no-check-certificate -qO /tmp/generic.sh https://raw.githubusercontent.com/Guilouz/Creality-Helper-Script/main/files/entware/generic.sh
     chmod +x /tmp/generic.sh
     /tmp/generic.sh
 
