@@ -73,11 +73,12 @@ update_config_files() {
     echo "Error: gcode_macro.cfg not found!"
     return 1
   fi
-  if ! wget --no-check-certificate -O /tmp/start_end.cfg https://raw.githubusercontent.com/K1-Klipper/cartographer-klipper/master/start_end.cfg; then
+  rm /usr/data/printer_data/config/start_end.cfg
+  if ! wget --no-check-certificate -O /usr/data/printer_data/config/start_end.cfg https://raw.githubusercontent.com/K1-Klipper/cartographer-klipper/master/start_end.cfg; then
     echo "Error: Downloading start_end.cfg failed!"
     return 1
   fi
-  if [[ ! -f /tmp/start_end.cfg ]]; then
+  if [[ ! -f /usr/data/printer_data/config/start_end.cfg ]]; then
     echo "Error: Downloaded start_end.cfg not found!"
     return 1
   fi
