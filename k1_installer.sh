@@ -52,9 +52,14 @@ kamp_check(){
 }
 
 clone_cartographer() {
+if [[! -d "/usr/data/cartographer-klipper"]]; then
   git config --global http.sslVerify false
-  git clone https://github.com/K1-Klipper/cartographer-klipper.git /usr/data/cartographer-klipper
+  git clone https://github.com/K1-Klipper/cartographer-klipper.git /usr/data/cartographer-klipper || {
+    echo "Error: Git cloning Cartographer failed. Exiting..."
+    exit 1
+  }
   echo "Please don't forget to checkout the k1-carto branch in your klipper folder for best results"
+fi
 }
 
 create_cartographer_symlink() {
