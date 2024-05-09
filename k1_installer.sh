@@ -55,15 +55,16 @@ fi
 }
 
 clone_cartographer() {
-if [[! -d "/usr/data/cartographer-klipper"]]; then
-  git config --global http.sslVerify false
-  git clone https://github.com/K1-Klipper/cartographer-klipper.git /usr/data/cartographer-klipper || {
-    echo "Error: Git cloning Cartographer failed. Exiting..."
-    exit 1
-  }
-  echo "Please don't forget to checkout the k1-carto branch in your klipper folder for best results"
-fi
+  if [[ ! -d "/usr/data/cartographer-klipper" ]]; then
+    git -c http.sslVerify=false clone https://github.com/K1-Klipper/cartographer-klipper.git /usr/data/cartographer-klipper && {
+      echo "Please don't forget to checkout the k1-carto branch in your klipper folder for best results"
+    } || {
+      echo "Error: Git cloning Cartographer failed. Exiting..."
+      exit 1
+    }
+  fi
 }
+
 
 create_cartographer_symlink() {
   if [ ! -e "/usr/data/klipper/klippy/extras/cartographer.py" ]; then
