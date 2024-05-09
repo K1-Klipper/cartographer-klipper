@@ -42,7 +42,6 @@ kamp_check(){
   }
 else
   echo "One or more directories already exist. Skipping cloning."
-fi
   cp /usr/data/KAMP/Configuration/KAMP_Settings.cfg /usr/data/printer_data/config/
   mkdir -p /usr/data/printer_config/config/KAMP
   ln -s /usr/data/KAMP/Configuration/Line_Purge.cfg /usr/data/printer_data/config/KAMP/
