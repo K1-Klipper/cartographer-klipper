@@ -35,11 +35,13 @@ entware_check(){
 }
 
 kamp_check(){
-  if [[ ! -d "/usr/data/KAMP-for-K1-Series/" && ! -d "/usr/data/KAMP/" ]]; then
+  if [[ ! -d "/usr/data/KAMP-for-K1-Series/" && ! -d "/usr/data/KAMP/" && ! -d "/usr/data/Klipper-Adaptive-Meshing-Purging/" ]]; then
   git clone https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git /usr/data/KAMP || {
     echo "Error: Git clone failed. Exiting..."
     exit 1
   }
+else
+  echo "One or more directories already exist. Skipping cloning."
   cp /usr/data/KAMP/Configuration/KAMP_Settings.cfg /usr/data/printer_data/config/
   mkdir -p /usr/data/printer_data/config/KAMP
   ln -s /usr/data/KAMP/Configuration/Line_Purge.cfg /usr/data/printer_data/config/KAMP/
@@ -52,10 +54,16 @@ kamp_check(){
 }
 
 clone_cartographer() {
-  git config --global http.sslVerify false
-  git clone https://github.com/K1-Klipper/cartographer-klipper.git /usr/data/cartographer-klipper
-  echo "Please don't forget to checkout the k1-carto branch in your klipper folder for best results"
+  if [[ ! -d "/usr/data/cartographer-klipper" ]]; then
+    git -c http.sslVerify=false clone https://github.com/K1-Klipper/cartographer-klipper.git /usr/data/cartographer-klipper && {
+      echo "Please don't forget to checkout the k1-carto branch in your klipper folder for best results"
+    } || {
+      echo "Error: Git cloning Cartographer failed. Exiting..."
+      exit 1
+    }
+  fi
 }
+
 
 create_cartographer_symlink() {
   if [ ! -e "/usr/data/klipper/klippy/extras/cartographer.py" ]; then
