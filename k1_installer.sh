@@ -11,7 +11,11 @@ gcode_shell_check(){
   if ! [ -f "/usr/data/klipper/klippy/extras/gcode_shell_command.py" ]; then
   echo "Downloading gcode_shell_command.py..."
   wget --no-check-certificate -qO "/usr/data/klipper/klippy/extras/gcode_shell_command.py" "https://raw.githubusercontent.com/dw-0/kiauh/master/resources/gcode_shell_command.py"
-    if [ $? -ne 0 ]; then
+    if [ $? -eq 0 ]; then
+      if ! grep -q "klippy/extras/gcode_shell_command.py" "/usr/share/klipper/.git/info/exclude"; then
+        echo "klippy/extras/gcode_shell_command.py" >> "/usr/share/klipper/.git/info/exclude"
+      fi
+    else
       echo "Error: Download failed!"
       exit 1
     fi
@@ -69,7 +73,9 @@ create_cartographer_symlink() {
   if [ ! -e "/usr/data/klipper/klippy/extras/cartographer.py" ]; then
     if [ -e "/usr/data/cartographer-klipper/cartographer.py" ]; then
       ln -sf "/usr/data/cartographer-klipper/cartographer.py" "/usr/data/klipper/klippy/extras/cartographer.py" || { echo "Error: Failed to create symlink"; exit 1; }
-      echo "klippy/extras/cartographer.py" >> /usr/data/klipper/.gitignore
+      if ! grep -q "klippy/extras/cartographer.py" "/usr/share/klipper/.git/info/exclude"; then
+        echo "klippy/extras/cartographer.py" >> "/usr/share/klipper/.git/info/exclude"
+      fi
     else
       echo "Error: cartographer.py not found in /usr/data/cartographer-klipper/"
       exit 1
