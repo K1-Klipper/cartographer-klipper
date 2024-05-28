@@ -88,7 +88,10 @@ update_config_files() {
     echo "Error: gcode_macro.cfg not found!"
     return 1
   fi
-  rm /usr/data/printer_data/config/start_end.cfg
+  if [[ ! -f "/usr/data/printer_data/config/start_end.cfg" ]]; then
+    rm /usr/data/printer_data/config/start_end.cfg
+    echo "Removing old start_end.cfg"
+  fi
   if ! wget --no-check-certificate -O /usr/data/printer_data/config/start_end.cfg https://raw.githubusercontent.com/K1-Klipper/cartographer-klipper/master/start_end.cfg; then
     echo "Error: Downloading start_end.cfg failed!"
     return 1
@@ -104,7 +107,6 @@ update_config_files() {
     echo "Error: Deleting lines in gcode_macro.cfg failed!"
     return 1
   fi
-  mv /tmp/start_end.cfg /usr/data/printer_data/config/start_end.cfg
   if ! sed -i '/\[include printer_params.cfg\]/a\[include cartographer_macro.cfg\]' /usr/data/printer_data/config/printer.cfg; then
     echo "Error: Adding cartographer_macro.cfg to printer.cfg failed!"
     return 1
