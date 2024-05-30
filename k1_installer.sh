@@ -45,7 +45,9 @@ kamp_check(){
     exit 1
   }
 else
-  echo "One or more directories already exist. Skipping cloning."
+  echo "One or more directories already exist. Removing potential duplicates and recloning"
+  rm -rf /usr/data/KAMP*
+  git clone https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git /usr/data/KAMP
   cp /usr/data/KAMP/Configuration/KAMP_Settings.cfg /usr/data/printer_data/config/
   mkdir -p /usr/data/printer_data/config/KAMP
   ln -s /usr/data/KAMP/Configuration/Line_Purge.cfg /usr/data/printer_data/config/KAMP/
