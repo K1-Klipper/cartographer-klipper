@@ -53,7 +53,6 @@ else
   ln -s /usr/data/KAMP/Configuration/Line_Purge.cfg /usr/data/printer_data/config/KAMP/
   ln -s /usr/data/KAMP/Configuration/Smart_Park.cfg /usr/data/printer_data/config/KAMP/
   ln -s /usr/data/KAMP/Configuration/Adaptive_Meshing.cfg /usr/data/printer_data/config/KAMP/
-  sed -i 's/^#\s+\[include \.\/KAMP\/Adaptive_Meshing\.cfg\]\s*$/[include \.\/KAMP\/Adaptive_Meshing\.cfg]\t# Include to enable adaptive meshing configuration./' /usr/data/printer_data/config/KAMP_Settings.cfg
   sed -i 's/^#\s+\[include \.\/KAMP\/Line_Purge\.cfg\]\s*$/[include \.\/KAMP\/Line_Purge\.cfg]\t# Include to enable adaptive line purging configuration./' /usr/data/printer_data/config/KAMP_Settings.cfg
   sed 's/^#\s+\[include \.\/KAMP\/Smart_Park\.cfg\]\s*$/[include \.\/KAMP\/Smart_Park\.cfg]\t# Include to enable the Smart Park function, which parks the printhead near the print area for final heating./' /usr/data/printer_data/config/KAMP_Settings.cfg
   fi
