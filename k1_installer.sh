@@ -48,6 +48,10 @@ else
   echo "One or more directories already exist. Removing potential duplicates and recloning"
   rm -rf /usr/data/KAMP*
   git clone -c http.sslVerify=false https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git /usr/data/KAMP
+  fi
+}
+
+deploy_kamp(){
   cp /usr/data/KAMP/Configuration/KAMP_Settings.cfg /usr/data/printer_data/config/
   mkdir -p /usr/data/printer_data/config/KAMP
   ln -s /usr/data/KAMP/Configuration/Line_Purge.cfg /usr/data/printer_data/config/KAMP/
@@ -55,7 +59,6 @@ else
   ln -s /usr/data/KAMP/Configuration/Adaptive_Meshing.cfg /usr/data/printer_data/config/KAMP/
   sed -i 's/^#\s+\[include \.\/KAMP\/Line_Purge\.cfg\]\s*$/[include \.\/KAMP\/Line_Purge\.cfg]\t# Include to enable adaptive line purging configuration./' /usr/data/printer_data/config/KAMP_Settings.cfg
   sed 's/^#\s+\[include \.\/KAMP\/Smart_Park\.cfg\]\s*$/[include \.\/KAMP\/Smart_Park\.cfg]\t# Include to enable the Smart Park function, which parks the printhead near the print area for final heating./' /usr/data/printer_data/config/KAMP_Settings.cfg
-  fi
 }
 
 clone_cartographer() {
@@ -144,6 +147,7 @@ check_klipper_directory
 gcode_shell_check
 entware_check
 kamp_check
+deploy_kamp
 clone_cartographer
 create_cartographer_symlink
 update_config_files
