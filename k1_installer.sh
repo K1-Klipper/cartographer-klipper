@@ -39,14 +39,18 @@ entware_check(){
 }
 
 virtualpin_check(){
-  if [[ ! -f "/usr/data/klipper/klippy/extra/virtual_pins.py" ]]; then
-  echo "Fixing virtual pins to avoid user complaints for KAMP installed from helper script......................"
-  echo "......................."
-  echo "......................."
-  echo ".....this is fixing KAMP from Guilouz installer"
-  wget --nocheck-certificate -qO /usr/data/klipper/klippy/extras/virtual_pins.py https://raw.githubusercontent.com/Guilouz/Creality-Helper-Script/main/files/klipper-virtual-pins/virtual_pins.py
+  if [[ ! -f "/usr/data/klipper/klippy/extras/virtual_pins.py" ]]; then
+    echo "Fixing virtual pins to avoid user complaints for KAMP installed from helper script......................"
+    echo "......................."
+    echo "......................."
+    echo ".....this is fixing KAMP from Guilouz installer"
+
+    if ! wget --nocheck-certificate -qO /usr/data/klipper/klippy/extras/virtual_pins.py https://raw.githubusercontent.com/Guilouz/Creality-Helper-Script/main/files/klipper-virtual-pins/virtual_pins.py; then
+      echo "Error: Failed to download virtual_pins.py. Klipper virtual pins might not function properly."
+    fi
   fi
 }
+
 kamp_check(){
   if [[ ! -d "/usr/data/KAMP-for-K1-Series/" && ! -d "/usr/data/KAMP/" && ! -d "/usr/data/Klipper-Adaptive-Meshing-Purging/" ]]; then
   git clone -c http.sslVerify=false https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git /usr/data/KAMP || {
