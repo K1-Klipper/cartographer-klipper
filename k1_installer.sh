@@ -38,6 +38,15 @@ entware_check(){
   opkg install mjpg-streamer mjpg-streamer-input-http mjpg-streamer-input-uvc mjpg-streamer-output-http mjpg-streamer-www
 }
 
+virtualpin_check(){
+  if [[ ! -d "/usr/data/klipper/klippy/extra/virtual_pins.py" ]]; then
+  echo "Fixing virtual pins to avoid user complaints for KAMP installed from helper script......................"
+  echo "......................."
+  echo "......................."
+  echo ".....this is fixing KAMP from Guilouz installer"
+  wget --nocheck-certificate -qO /usr/data/klipper/klippy/extras/virtual_pins.py https://raw.githubusercontent.com/Guilouz/Creality-Helper-Script/main/files/klipper-virtual-pins/virtual_pins.py
+  fi
+}
 kamp_check(){
   if [[ ! -d "/usr/data/KAMP-for-K1-Series/" && ! -d "/usr/data/KAMP/" && ! -d "/usr/data/Klipper-Adaptive-Meshing-Purging/" ]]; then
   git clone -c http.sslVerify=false https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git /usr/data/KAMP || {
@@ -146,6 +155,7 @@ update_klipper_service() {
 check_klipper_directory
 gcode_shell_check
 entware_check
+virtualpin_check
 kamp_check
 deploy_kamp
 clone_cartographer
