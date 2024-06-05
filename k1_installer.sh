@@ -39,7 +39,7 @@ entware_check(){
 }
 
 virtualpin_check(){
-  if [[ ! -d "/usr/data/klipper/klippy/extra/virtual_pins.py" ]]; then
+  if [[ ! -f "/usr/data/klipper/klippy/extra/virtual_pins.py" ]]; then
   echo "Fixing virtual pins to avoid user complaints for KAMP installed from helper script......................"
   echo "......................."
   echo "......................."
