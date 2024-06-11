@@ -45,7 +45,7 @@ virtualpin_check(){
     echo "......................."
     echo ".....this is fixing KAMP from Guilouz installer"
 
-    if ! wget --nocheck-certificate -qO /usr/data/klipper/klippy/extras/virtual_pins.py https://raw.githubusercontent.com/Guilouz/Creality-Helper-Script/main/files/klipper-virtual-pins/virtual_pins.py; then
+    if ! wget --no-check-certificate -qO /usr/data/klipper/klippy/extras/virtual_pins.py https://raw.githubusercontent.com/Guilouz/Creality-Helper-Script/main/files/klipper-virtual-pins/virtual_pins.py; then
       echo "Error: Failed to download virtual_pins.py. Klipper virtual pins might not function properly."
     fi
   fi
