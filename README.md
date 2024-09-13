@@ -114,7 +114,7 @@ print_start EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_te
 
 ***Special Thanks to Zarboz, Shima, BootyCall Jones, and Destinal for their contributions to this project***
 
-[Download the Model]: https://makerworld.com/en/models/200689
+[Download the Model]: https://github.com/K1-Klipper/cartographer-klipper
 [Follow the Assembly Manual]: https://docs.google.com/document/d/1iOOGeqHqNmlJenYUOr2cGRdccpGq-NLx-ezH2wCMzag/edit?usp=sharing
 [Root access]: https://github.com/Guilouz/Creality-K1-and-K1-Max/wiki/Install-&-Update-Rooted-Firmware#enable-root-access
 [Moonraker & Fluidd **OR** Mainsail]: https://github.com/Guilouz/Creality-K1-and-K1-Max/wiki/Moonraker-and-Nginx
